@@ -53,10 +53,10 @@ public class NewPaymentScreen {
             list=driver.findElements(elements3);
             for (WebElement element : list) {
                 if (element.getAttribute("text").equals("New payment process")) {
-                    // User logins suucessfully and navigated to the new payment screen
+                    // User logins successfully and navigated to the new payment screen
                     check = true;
                 } else if (element.getAttribute("text").equals("Please, login to your account")) {
-                    // User couldn't loginn
+                    // User couldn't login
                     check = false;
                 }
             }

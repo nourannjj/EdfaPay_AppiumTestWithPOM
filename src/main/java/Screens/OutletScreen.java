@@ -25,7 +25,7 @@ public class OutletScreen {
     private By Register_TerminalButton=By.xpath("//*[@text='Register Terminal']");
     private By elements5=By.xpath("//android.widget.TextView");
 
-    // Function2:Check the validation of only the created outlet in the outlet list
+    // Function:Check the validation of only the created outlet in the outlet list
     public boolean ChecktheoutletsintheList(){
         driver.findElement(outletList).click(); // open the list
         String outlet1 = "Default Outlet branch", outlet2 = "Maadi";

@@ -20,6 +20,7 @@ public class DateOfOperationScreen {
     private By NavigateLeft=By.id("sbs.softpos.edfaa:id/imgVNavLeft");
     private By ApplyButton=By.id("sbs.softpos.edfaa:id/btn_apply");
 
+
     public int[] GetDataInYearFiled()
     {
         //Get Data

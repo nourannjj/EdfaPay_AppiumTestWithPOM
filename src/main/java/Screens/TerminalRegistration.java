@@ -22,13 +22,7 @@ public class TerminalRegistration {
         String otp = input.nextLine();
         otpScreen.EnterOTP(otp);
         OutletScreen outletScreen=otpScreen.ClickOnConfirmButton();
-        /*
-        // Allow GPS
-        PreciseLocation.click();
-        allow_GPS_button.click();
 
-         */
-        // Choose the desired outlet
         NewPaymentScreen newPaymentScreen=outletScreen.ChooseOutlet();
         // logout from the merchant account
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();

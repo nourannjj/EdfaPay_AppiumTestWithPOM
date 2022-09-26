@@ -200,7 +200,6 @@ public class HistoryScreen {
                 for (WebElement element : list) {
                     if(Type.equals("Payment")) {
                         if (element.getAttribute("text").equals("Refund") || element.getAttribute("text").equals("Cancel")) {
-                            // User logins suucessfully and navigated to the new payment screen
                             check = false;
                             break;
                         }
@@ -208,7 +207,6 @@ public class HistoryScreen {
                     }
                     else if(Type.equals("Cancel")) {
                         if (element.getAttribute("text").equals("Refund") || element.getAttribute("text").equals("Payment")) {
-                            // User logins suucessfully and navigated to the new payment screen
                             check = false;
                             break;
                         }
@@ -216,7 +214,6 @@ public class HistoryScreen {
                     }
                     else if(Type.equals("Refund")) {
                         if (element.getAttribute("text").equals("Refund") || element.getAttribute("text").equals("Cancel")) {
-                            // User logins suucessfully and navigated to the new payment screen
                             check = false;
                             break;
                         }

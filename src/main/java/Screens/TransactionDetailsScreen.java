@@ -38,14 +38,14 @@ public class TransactionDetailsScreen {
     private By CloseButton=By.xpath("//*[@text='Close']");
 
 
-    //Function2:click on the Cancel Button
+    //Function:click on the Cancel Button
     public TransactionDetailsScreen ClickONCancelBtn()
     {
         driver.findElement(CancelButton).click();
         return new TransactionDetailsScreen(driver);
     }
 
-    //Function3:Check the presence of refund button after 60 sec
+    //Function:Check the presence of refund button after 60 sec
     public boolean CheckPresenceOfRefundBtn(AppiumDriver driver)
     {
         //Explicit wait until the refund button is visible
@@ -55,7 +55,7 @@ public class TransactionDetailsScreen {
         return ((driver.findElement(RefundButton).isEnabled())&&(driver.findElement(RefundButton).isDisplayed()));
 
     }
-    //Function4:click on the refund button
+    //Function:click on the refund button
     public SupervisorListScreen ClickOnRefundBtn_fromUser()
     {
         driver.findElement(RefundButton).click();
@@ -137,27 +137,27 @@ public class TransactionDetailsScreen {
         return (driver.findElement(OperationType).getAttribute("text"));
     }
 
-    //Function"Get Transaction amount
+    //Function:Get Transaction amount
     public  String GetTransactionAmount()
     {
         return (driver.findElement(PaymentField).getAttribute("text"));
     }
-    //Function"Get Card number
+    //Function:Get Card number
     public  String GetCardNumber()
     {
         return (driver.findElement(CardNumber).getAttribute("text"));
     }
-    //Function"Get Schema type
+    //Function:Get Schema type
     public  String GetScheme()
     {
         return (driver.findElement(Scheme).getAttribute("text"));
     }
-    //Function"Get Transaction number
+    //Function:Get Transaction number
     public  String GetTransactionNumber()
     {
         return (driver.findElement(TransNum).getAttribute("text"));
     }
-    //Function"Get RRN
+    //Function:Get RRN
     public  String GetRRN()
     {
         return (driver.findElement(RRN).getAttribute("text"));

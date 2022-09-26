@@ -153,7 +153,7 @@ public class LoginScreen  {
             mSuspend = Input.equals("y");
         } while (!mSuspend);
     }
-    //Function:Check that merchant is activated after being susoended
+    //Function:Check that merchant is activated after being suspended
     public void CheckThatMerchnatIsActivated()
     {
         System.out.println("Activate a suspended merchant");
@@ -182,7 +182,7 @@ public class LoginScreen  {
     public boolean checkThatTerminalRegistered(String email)
     {
         boolean flag;
-        //Login with user credintials
+        //Login with user credentials
         fillemailAndpasword(email,"12345678");
         NewPaymentScreen newPaymentScreen=click_on_loginbtn_for_User();
         arr=check_Navigation_to_AlertScreen("nothing");

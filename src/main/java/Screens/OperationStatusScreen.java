@@ -45,7 +45,7 @@ public class OperationStatusScreen {
         WebDriverWait wait=new WebDriverWait(driver,15);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(OperationStatuestitle));
     }
-    //Function7:Check navigation to the receipt screen
+    //Function:Check navigation to the receipt screen
     public String[] Check_Navigation_To_ReceiptScreen(String comm)
     {
         int attempts = 0;
@@ -77,7 +77,7 @@ public class OperationStatusScreen {
         array[0]=check;array[1]=comment;
         return array;
     }
-    //Function7:Check navigation to the receipt screen
+
     public String[] Check_Navigation_To_OperationStautsScreen(String comm)
     {
         int attempts = 0;

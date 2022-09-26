@@ -33,14 +33,14 @@ public class ReceiptScreen {
     private By TransNum=By.id("sbs.softpos.edfaa:id/txt_transactionNumber");
     private By RRN=By.id("sbs.softpos.edfaa:id/txt_rrnNumber");
 
-    //Function2:click on the Cancel Button
+    //Function:click on the Cancel Button
     public ReceiptScreen ClickONCancelBtn()
     {
         driver.findElement(CancelButton).click();
         return new ReceiptScreen(driver);
     }
 
-    //Function3:Check the presence of refund button after 60 sec
+    //Function:Check the presence of refund button after 60 sec
     public boolean CheckPresenceOfRefundBtn(AppiumDriver driver)
     {
         //Explicit wait until the refund button is visible
@@ -50,7 +50,7 @@ public class ReceiptScreen {
         return ((driver.findElement(RefundButton).isEnabled())&&(driver.findElement(RefundButton).isDisplayed()));
 
     }
-    //Function4:click on the refund button
+    //Function:click on the refund button
     public SupervisorListScreen ClickOnRefundBtn_fromUser()
     {
         driver.findElement(RefundButton).click();

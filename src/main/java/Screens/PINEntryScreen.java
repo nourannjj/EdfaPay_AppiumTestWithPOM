@@ -57,7 +57,7 @@ public class PINEntryScreen {
         return new ScanCardScreen(driver);
     }
 
-    //Function4:Read the data in the PIN field
+    //Function:Read the data in the PIN field
     public String ReadDataInPINFiled()
     {
         return (driver.findElement(PINfield).getAttribute("text"));
@@ -68,13 +68,13 @@ public class PINEntryScreen {
         return (Actual.equals(Expected));
 
     }
-    //Function7:Click on the reset OTP button
+    //Function:Click on the reset OTP button
     public void ClickOnResetOTPbtn()
     {
 
         driver.findElement(ResetOTPbtn).click();
     }
-    //Function8:Check remaining at PIN scree
+    //Function:Check remaining at PIN scree
     public boolean Check_RemainingAtPINScreen()
     {
         list=driver.findElements(elements);
@@ -88,7 +88,7 @@ public class PINEntryScreen {
         }
         return check;
     }
-    //Function9:close the PIN entry screen and navigate to New Payment screen
+    //Function:close the PIN entry screen and navigate to New Payment screen
     public NewPaymentScreen NavigateBackToNewPaymentScreen()
     {
         driver.findElement(Backbtn).click();
