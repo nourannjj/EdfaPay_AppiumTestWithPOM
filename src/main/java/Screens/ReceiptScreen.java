@@ -130,5 +130,12 @@ public class ReceiptScreen {
         boolean Check=driver.findElement(Location).getAttribute("text").equals(location);
         return Check;
     }
+    public String GetTransactionNumber()
+    {
+        String Total[]=driver.findElement(TransNum).getText().split(":");
+        String TXNumber=Total[1];
+        return TXNumber;
+
+    }
 
 }

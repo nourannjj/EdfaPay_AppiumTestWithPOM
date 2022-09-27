@@ -299,5 +299,61 @@ public class HistoryScreen {
         }
         return check;
     }
+    public boolean CheckThePresenceOfOnlyFilterdByTransactionNumber(String TransNum)
+    {
+        boolean check=true;
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                list=driver.findElements(TransactionAmount);
+                if(list.size()!=1) check=false; //As it must appear only one transaction
+                else {
+                    //open transaction
+                    list.get(0).click();
+                    //Get transaction num
+                    TransactionDetailsScreen transactionDetailsScreen=new TransactionDetailsScreen(driver);
+                    String Tx_num=transactionDetailsScreen.GetTransactionNumber();
+                    //Compare the transaction numbers
+                    if(!Tx_num.equals(TransNum)) check=false;
+                }
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return check;
+    }
 
+    public boolean CheckThePresenceOfOnlyFilterdByPartOfTransactionNumber(String Sub_TransNum)
+    {
+        boolean check=true;
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                list=driver.findElements(TransactionAmount);
+
+                for (WebElement element : list) {
+                    //loop on all transaction appear and open it check transaction number
+                    element.click();//open transaction
+                    //Get transaction num
+                    TransactionDetailsScreen transactionDetailsScreen=new TransactionDetailsScreen(driver);
+                    String Tx_num=transactionDetailsScreen.GetTransactionNumber();
+                    String Tx_num_sub=Tx_num.substring(0,7);
+                    //Compare the transaction numbers
+                    if(!Tx_num_sub.equals(Sub_TransNum))
+                    {
+                        check=false;
+                        break;
+                    }
+                    //Back to transaction history screen and open the next transaction
+                    driver.navigate().back();
+
+                }
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return check;
+    }
 }

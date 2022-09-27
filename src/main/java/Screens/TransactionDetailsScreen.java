@@ -153,9 +153,12 @@ public class TransactionDetailsScreen {
         return (driver.findElement(Scheme).getAttribute("text"));
     }
     //Function:Get Transaction number
-    public  String GetTransactionNumber()
+    public String GetTransactionNumber()
     {
-        return (driver.findElement(TransNum).getAttribute("text"));
+        String Total[]=driver.findElement(TransNum).getText().split(":");
+        String TXNumber=Total[1];
+        return TXNumber;
+
     }
     //Function:Get RRN
     public  String GetRRN()
@@ -207,5 +210,6 @@ public class TransactionDetailsScreen {
         driver.findElement(SendReceiptBtn).click();
         return new SendReceiptScreen(driver);
     }
+
 
 }
