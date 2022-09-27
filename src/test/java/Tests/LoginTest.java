@@ -18,13 +18,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // case1:no Email or password is inserted so login button must be disabled
@@ -49,13 +47,11 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // enter an invalid email format "doesn't contain @"
@@ -77,14 +73,12 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
 
-        //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // enter an invalid password of less than 8 digits
@@ -102,13 +96,11 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
@@ -124,7 +116,7 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-        //driver.quit();
+
 
     }
     @Test(description = "validation on login using a merchant account with the correct email and incorrect password.", priority = 9)
@@ -134,13 +126,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
 
@@ -158,7 +148,7 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-        //driver.quit();
+
 
     }
     @Test(description = "validation on login using a merchant account with an invalid email and valid password.", priority = 10)
@@ -166,13 +156,12 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
 
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        //Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         loginScreen.fillemailAndpasword("m8_error@sbs.com","536860574604"); //wrong Email
@@ -197,13 +186,11 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         //entering password wrong 4 times
@@ -227,7 +214,6 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-       // driver.quit();
 
     }
     @Test(description = "validate that Merchant Received OTP via SMS", priority = 13)
@@ -236,13 +222,11 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
@@ -257,8 +241,6 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-        //driver.quit();
-
     }
     @Test(description = "Validation on entering the OTP sent on the merchant number.", priority = 14)
     public void TC_edfapay_014() throws IOException, InterruptedException {
@@ -267,13 +249,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
@@ -295,7 +275,7 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-        //driver.quit();
+
     }
     @Test(description = "Validation on entering OTP except for the last digit", priority = 15)
     public void TC_edfapay_015() throws IOException, InterruptedException {
@@ -303,13 +283,12 @@ public class LoginTest extends BaseTest {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
 
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        //Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
 
@@ -329,7 +308,7 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertAll();
-        //driver.quit();
+
 
     }
     @Test(description = "Validation on resend OTP", priority = 16)
@@ -339,13 +318,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // Enter Email and Password
@@ -385,14 +362,13 @@ public class LoginTest extends BaseTest {
     public void TC_edfapay_017() throws IOException, InterruptedException {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softassert = new SoftAssert();
-        boolean falg=false;
+
         //Check remaining at login screen
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // Enter Email and Password
@@ -429,13 +405,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
 
@@ -468,13 +442,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
 
@@ -509,13 +481,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         //Check whether terminal is registered or not
@@ -542,13 +512,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // Enter Email and Password
@@ -570,7 +538,7 @@ public class LoginTest extends BaseTest {
             driver.launchApp();//launch app from background
         }
         softassert.assertEquals(arr[0],"true",arr[1]);
-
+        System.out.println("Turn on GPS");
         softassert.assertAll();
         //driver.quit();
     }
@@ -582,21 +550,18 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        System.out.println("flag="+falg);
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         //Check whether terminal is registered or not
         if(!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com"))
         {
             //Terminal Registration
-            terminalRegistration.TerminalReg();
+            loginScreen=terminalRegistration.TerminalReg();
         }
         else
         {
@@ -606,15 +571,15 @@ public class LoginTest extends BaseTest {
         // login with supervisor credentials // login with wrong password 4 times
         for (int i=0;i<4;i++)
         {
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "11111111");
+            loginScreen.fillemailAndpasword("m8sup2@sbs.com", "11111111");
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
         // Enter the right password after 4 times entering the wrong password
         // supervisor mustn't be allowed to navigate to the OTP screen
-        loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+        loginScreen.fillemailAndpasword("m8sup2@sbs.com","12345678");
         newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         // Check that user couldn't log in successfully by the being exist in login screen
-        Comm="Error behaviour:User could login despite entering password wrong more than 3 times";
+        Comm="Error behaviour:Supervisor could login despite entering password wrong more than 3 times";
         arr=newPaymentScreen.Check_Remaing_To_LoginScreen(Comm);
         softassert.assertEquals(arr[0],"true",arr[1]);
         softassert.assertAll();
@@ -627,13 +592,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // click on the forget password button
@@ -655,13 +618,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // Check that user is suspended
@@ -678,12 +639,21 @@ public class LoginTest extends BaseTest {
         softassert.assertAll();
         //driver.quit();
     }
-    @Test(description = "validation on logging with a merchant account if this merchant is suspended on web portals", priority = 34,enabled = false)
+    @Test(description = "validation on logging with a merchant account if this merchant is suspended on web portals", priority = 34)
     public void TC_edfapay_034() throws IOException {
         SoftAssert softassert = new SoftAssert();
 
         // Check that Merchant is suspended
         loginScreen.CheckThatMerhantIsSuspended();
+
+        //Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
         // login with Merchant credentials
         loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
         OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
@@ -702,22 +672,24 @@ public class LoginTest extends BaseTest {
         softassert.assertAll();
         //driver.quit();
     }
-    @Test(description = "validation on logging with user account if its merchant is suspended on web portals", priority = 35,enabled = false)
+    @Test(description = "validation on logging with user account if its merchant is suspended on web portals", priority = 35)
     public void TC_edfapay_035() throws IOException {
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softassert = new SoftAssert();
 
-        //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+         //Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
+
+        // Check that Merchant is suspended
+        loginScreen.CheckThatMerhantIsSuspended();
+
         //Check whether terminal is registered or not
         if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
         {
@@ -727,12 +699,8 @@ public class LoginTest extends BaseTest {
             loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
-        // Check that Merchant is suspended
-        loginScreen.CheckThatMerhantIsSuspended();
-        // insert user credentials
-        loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
-        newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
-        //Validation on remaining at loginScreen And doesn't navigate to the New Paymnet Screen
+
+        //Validation on remaining at loginScreen And doesn't navigate to the New Payment Screen
         Comm="Error behaviour:User could login although his merchant is suspended";
         arr=newPaymentScreen.Check_Remaing_To_LoginScreen(Comm);
         softassert.assertEquals(arr[0],"true",arr[1]);
@@ -747,13 +715,11 @@ public class LoginTest extends BaseTest {
         SoftAssert softassert = new SoftAssert();
 
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
         // Check that Merchant is Activated
@@ -784,24 +750,14 @@ public class LoginTest extends BaseTest {
         // Check that Merchant is Activated
         loginScreen.CheckThatMerchnatIsActivated();
         //Check remaining at login screen
-        boolean falg=false;
-        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
-        falg=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
-        if(!(arr[0].equals("true"))&&falg)//if Not at login screen and at new payment screen then should be navigated to login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
         {
-            ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-            loginScreen=profileScreen.ClickOnlogoutBtn();
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
 
         }
-        //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
-        {
-            //Terminal Registration
-            terminalRegistration.TerminalReg();
-            //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
-            newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
-        }
+
         // login with user credentials
         loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
         newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
@@ -813,7 +769,7 @@ public class LoginTest extends BaseTest {
         softassert.assertAll();
         //driver.quit();
     }
-    @Test(description = "validation on logging with a user account if its merchant is activated on web portals after being suspended but user remains suspended as it is", priority = 38,enabled = false)
+    @Test(description = "validation on logging with a user account if its merchant is activated on web portals after being suspended and the user is activated too.", priority = 38,enabled = false)
     public void TC_edfapay_038() throws IOException {
         TerminalRegistration terminalRegistration =new TerminalRegistration(driver);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
@@ -840,9 +796,7 @@ public class LoginTest extends BaseTest {
             loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
-        // login with user credentials
-        loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
-        newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
+
         //Validation on Login and to navigate to the new Payment screen
         newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
         softassert.assertEquals(newPaymentScreen.Check_Navigation_to_NewPaymentScreen(),true,"Error behaviour:User couldn't login despite Activating it");
@@ -878,7 +832,7 @@ public class LoginTest extends BaseTest {
         }
 
         //Check Remaining at login Screen
-        Comm="Error behaviour:User could login despite being working under aother outlet than termianl is alrwady assigned to";
+        Comm="Error behaviour:User could login despite being working under anther outlet than terminal is already assigned to";
         arr=newPaymentScreen.Check_Remaing_To_LoginScreen(Comm);
         softassert.assertEquals(arr[0],"true",arr[1]);
         softassert.assertAll();
@@ -919,5 +873,220 @@ public class LoginTest extends BaseTest {
 
         softassert.assertAll();
         //driver.quit();
+    }
+    @Test(description = "validation on logging on the same outlet's terminals with a user account after editing the outlet in which that user is working from web portals.", priority = 41)
+    public void TC_edfapay_041() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        //Wait Until User outlet is changed
+        loginScreen.CheckThatUserOutletIsChanged();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //Check whether terminal is registered or not
+        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        {
+            //Terminal Registration
+            terminalRegistration.TerminalReg();
+            // login with user credentials not working for merchant m8
+            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
+        }
+
+        //Validation on remaining at the login screen
+        Comm="Error behaviour:User could login despite Changing the to another outlet than terminal is already assigned to";
+        arr=newPaymentScreen.Check_Remaing_To_LoginScreen(Comm);
+        softassert.assertEquals(arr[0],"true",arr[1]);
+
+        softassert.assertAll();
+        //driver.quit();
+    }
+    @Test(description = "validation on logging with the new user email after editing it.", priority = 42)
+    public void TC_edfapay_042() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        //Wait Until User email is changed
+        loginScreen.CheckThatUserEmailIsChanged();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //Check whether terminal is registered or not
+        if(!loginScreen.checkThatTerminalRegistered("m8u1_edit@sbs.com"))
+        {
+            //Terminal Registration
+            terminalRegistration.TerminalReg();
+            // login with user credentials not working for merchant m8
+            loginScreen.fillemailAndpasword("m8u1_edit@sbs.com","12345678"); //Add User not working at m8
+            newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
+        }
+
+        //Validation on Navigation to New Payment screen
+        Comm="Error couldn't login with the updated email";
+        boolean check=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
+        softassert.assertEquals(check,true,Comm);
+
+        softassert.assertAll();
+
+    }
+    @Test(description = "validation on logging with the previously used user email after editing it.", priority = 43)
+    public void TC_edfapay_043() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        //Wait Until User email is changed
+        loginScreen.CheckThatUserEmailIsChanged();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //Check whether terminal is registered or not
+        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        {
+            //Terminal Registration
+            terminalRegistration.TerminalReg();
+            // login with user credentials not working for merchant m8
+            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
+        }
+
+        //Validation on remaining at the login screen
+        Comm="Error behaviour:User could login with the old email despite editing it";
+        arr=newPaymentScreen.Check_Remaing_To_LoginScreen(Comm);
+        softassert.assertEquals(arr[0],"true",arr[1]);
+
+        softassert.assertAll();
+    }
+    @Test(description = "Validation of assigning the Terminal for only one merchant ", priority = 44)
+    public void TC_edfapay_044() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //Terminal Registration for merchant 8
+         loginScreen=termReg.TerminalReg();
+        //login with merchant 6 credentials
+        loginScreen.fillemailAndpasword("m6test@sbs.com","569661398278");
+        OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
+        //Check either navigating to alert screen or remaining at login screen
+        arr=loginScreen.check_Navigation_to_LoginAlertScreen("nothing");
+        String[] arr1=loginScreen.check_Remaining_At_LoginScreen("nothing");
+        String[] arr2=otpScreen.check_Navigation_To_OTPScreen("nothing");
+        boolean TotalCheck=(arr[0]=="true"||arr1[0]=="true")&&(arr2[0]=="false");
+        Comm="Error : More than one merchant can login on the same terminal";
+
+        softassert.assertEquals(TotalCheck,true,Comm);
+        softassert.assertAll();
+
+    }
+    @Test(description = "Validation of assigning the Terminal for only one outlet", priority = 45)
+    public void TC_edfapay_045() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //Terminal Registration for outlet maddi
+        loginScreen=termReg.TerminalReg();
+        //login with merchant 8 credentials
+        loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+        OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
+        message="Enter OTP";
+        otpScreen.EnterOTP(message);
+        OutletScreen outletScreen=otpScreen.ClickOnConfirmButton();
+        //Choose defult outlet
+        outletScreen.ChoosedefultOutlet();
+        //Check either navigating to alert screen or remaining at outlet screen
+        arr=outletScreen.check_remaining_To_OutletScreen("nothing");
+        String[] arr1=outletScreen.check_Navigation_to_AlertScreen("nothing");
+        boolean check=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
+        boolean TotalCheck=(arr[0]=="true"||arr1[0]=="true")&&(!check);
+        Comm="Error :Terminal can be assigned to more than one outlet";
+
+        softassert.assertEquals(TotalCheck,true,Comm);
+        //if test case filed assign terminal back to maadi
+        if(!TotalCheck)
+        {
+            loginScreen.BackToLoginScreen(driver);
+            loginScreen=termReg.TerminalReg();
+        }
+        softassert.assertAll();
+
+    }
+    @Test(description = "validate that the user or supervisor account login failed without first logging in with the merchant account and assigning the terminal to a specific outlet", priority = 49)
+    public void TC_edfapay_049() throws IOException {
+        TerminalRegistration termReg =new TerminalRegistration(driver);
+        NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
+        TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+        SoftAssert softassert = new SoftAssert();
+
+        ///Check remaining at login screen
+        arr = loginScreen.check_Remaining_At_LoginScreen("nothing");
+        if (!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+        {
+            //Back to login screen
+            loginScreen.BackToLoginScreen(driver);
+
+        }
+        //un complete terminal registration process
+        loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+        OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
+        driver.navigate().back();
+        driver.launchApp();
+        //login with user account
+        loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+        newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
+
+        //Check either navigating to alert screen or remaining at login screen and not navigating to new payment screen
+        arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
+        String[] arr1=loginScreen.check_Navigation_to_AlertScreen("nothing");
+        boolean check=newPaymentScreen.Check_Navigation_to_NewPaymentScreen();
+        boolean TotalCheck=(arr[0]=="true"||arr1[0]=="true")&&(!check);
+        Comm="Error :User can login without completing terminal registration process";
+
+        softassert.assertEquals(TotalCheck,true,Comm);
+        softassert.assertAll();
+
     }
 }

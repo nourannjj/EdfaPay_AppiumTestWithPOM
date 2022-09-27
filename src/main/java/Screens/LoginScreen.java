@@ -123,6 +123,37 @@ public class LoginScreen  {
         array[0]=check;array[1]=comment;
         return array;
     }
+    public String[] check_Navigation_to_LoginAlertScreen(String Comment)
+    {
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                list=driver.findElements(elements2);
+                for (WebElement element : list) {
+                    if (element.getAttribute("text").equals("Alert!")) {
+                        check = "true";
+                        expected = true;
+                        System.out.println(check);
+                    } else if (element.getAttribute("text").equals("New payment process")) {
+                        comment = Comment;
+                        check = "false";
+                        expected = true;
+
+                    }
+                    if (!expected) {
+                        comment = "Unexpected output";
+                        check = "false";
+                    }
+                }  break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        System.out.println(check);
+        String array[]=new String[2];
+        array[0]=check;array[1]=comment;
+        return array;
+    }
     //Function:Click on the Forget Password button
     public ForgetPasswordScreen ClickOnForgetPasswordButton()
     {
@@ -176,6 +207,30 @@ public class LoginScreen  {
             String Input = input.nextLine();
             m_uActive = Input.equals("y");
         } while (!m_uActive);
+
+    }
+    //Function:Check that User outlet is changed or not
+    public void CheckThatUserOutletIsChanged()
+    {
+        boolean ChangeUserOutlet = false;
+        do {
+            System.out.println("Did you change user outlet? if yes enter \"y\"");
+            input = new Scanner(System.in);
+            String Input = input.nextLine();
+            ChangeUserOutlet = Input.equals("y");
+        } while (!ChangeUserOutlet);
+
+    }
+    //Function:Check that User Email is changed or not
+    public void CheckThatUserEmailIsChanged()
+    {
+        boolean ChangeUserEmail = false;
+        do {
+            System.out.println("Did you change user email \"m8u1_edit@sbs.com\"? if yes enter \"y\"");
+            input = new Scanner(System.in);
+            String Input = input.nextLine();
+            ChangeUserEmail = Input.equals("y");
+        } while (!ChangeUserEmail);
 
     }
     //Function:Check that terminal is registered or not

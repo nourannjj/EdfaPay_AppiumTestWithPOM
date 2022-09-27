@@ -46,7 +46,12 @@ public class OutletScreen {
         driver.findElement(Register_TerminalButton).click();//Click on registerButton
         return new NewPaymentScreen((AndroidDriver) driver);
     }
-
+    //Choose Defult outlet
+    public NewPaymentScreen ChoosedefultOutlet()
+    {
+        driver.findElement(Register_TerminalButton).click();//Click on registerButton
+        return new NewPaymentScreen((AndroidDriver) driver);
+    }
     // Check that terminal is assigned to desired merchant and desired outlet (Need to be automotive)
     public boolean IsTerminalAssignedTotTheRightOutlet()
     {
@@ -92,5 +97,35 @@ public class OutletScreen {
 
     }
 
+    public String[] check_Navigation_to_AlertScreen(String Comment)
+    {
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                list=driver.findElements(elements5);
+                for (WebElement element : list) {
+                    if (element.getAttribute("text").equals("Alert!")) {
+                        check = "true";
+                        expected = true;
+                        System.out.println(check);
+                    } else if (element.getAttribute("text").equals("Please select one outlet from the list below to complete the terminal process.")) {
+                        comment = Comment;
+                        check = "false";
+                        expected = true;
 
+                    }
+                    if (!expected) {
+                        comment = "Unexpected output";
+                        check = "false";
+                    }
+                }  break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        System.out.println(check);
+        String array[]=new String[2];
+        array[0]=check;array[1]=comment;
+        return array;
+    }
 }

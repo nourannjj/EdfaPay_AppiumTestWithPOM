@@ -137,5 +137,34 @@ public class ReceiptScreen {
         return TXNumber;
 
     }
+    public String[] Check_Navigation_To_ReceiptScreen(String comm)
+    {
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                list=driver.findElements(elements);
+                for (WebElement element : list) {
+                    if (element.getAttribute("text").equals("Receipt")) {
+                        check = "true";
+                        expected = true;
+                    } else if (element.getAttribute("text").equals("Send receipt")) {
+                        comment =comm;
+                        check = "false";
+                        expected = true;
 
+                    }
+                    if (!expected) {
+                        comment = "Unexpected output";
+                        check = "false";
+
+                    }
+                } break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        String[] array =new String[2];
+        array[0]=check;array[1]=comment;
+        return array;
+    }
 }
