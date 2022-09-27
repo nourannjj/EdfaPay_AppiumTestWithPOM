@@ -124,11 +124,17 @@ public class ReceiptScreen {
         boolean Check=driver.findElement(CardNumber).getAttribute("text").equals(CardNum);
         return Check;
     }
-    //Check location
-    public boolean CheckLocation(String location)
+    //Get location
+    public String GetLocation()
     {
-        boolean Check=driver.findElement(Location).getAttribute("text").equals(location);
-        return Check;
+        String location=driver.findElement(Location).getAttribute("text");
+        return location;
+    }
+    //Get RRN
+    public String GetRRN()
+    {
+        String rrn=driver.findElement(RRN).getAttribute("text");
+        return rrn;
     }
     public String GetTransactionNumber()
     {
@@ -166,5 +172,43 @@ public class ReceiptScreen {
         String[] array =new String[2];
         array[0]=check;array[1]=comment;
         return array;
+    }
+    //Function: Check that Supervisor role is changed to user
+    public void CheckSupervisorRoleIsChangeToUser()
+    {
+        boolean mSuspend = false;
+        do {
+            System.out.println("Did you Change Supervisor2 role to user ? if yes enter \"y\"");
+            input = new Scanner(System.in);
+            String Input = input.nextLine();
+            mSuspend = Input.equals("y");
+        } while (!mSuspend);
+    }
+    //Get Day , Month and Year
+    public int[] GetTransactionDate()
+    {
+       String[] WithDayText= driver.findElement(TransDateAndTime).getText().split(",");
+       String[] WithoutDayText=WithDayText[1].split(" ");
+       int Day=Integer.valueOf(WithoutDayText[1]);
+       String month=WithoutDayText[2];
+       int Month=0;
+        switch (month) {
+            case "January" -> Month = 1;
+            case "February" -> Month = 2;
+            case "March" -> Month = 3;
+            case "April" -> Month = 4;
+            case "May" -> Month = 5;
+            case "June" -> Month = 6;
+            case "July" -> Month = 7;
+            case "August" -> Month = 8;
+            case "September" -> Month = 9;
+            case "October" -> Month = 10;
+            case "November" -> Month = 11;
+            case "December" -> Month = 12;
+        }
+       int Year =Integer.valueOf(WithoutDayText[3].substring(0,4));
+
+       int[] TransactionDate={Day,Month,Year};
+       return TransactionDate;
     }
 }

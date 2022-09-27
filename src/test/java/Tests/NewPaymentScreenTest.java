@@ -392,31 +392,35 @@ public class NewPaymentScreenTest extends BaseTest {
         softAssert.assertAll();
         //driver.closeApp();
     }
-    /*
+
         @Test(description = "Validation of the error message appears when the merchant tries to perform any operation ", priority = 62)
         public void TC_edfapay_061() throws IOException
         {
-            Loginscreen logscreen=new Loginscreen(driver);
-            OTPscreen otpscreen=new OTPscreen(driver);
-            GPSscreen gpsscreen=new GPSscreen(driver);
+            TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
+            OTPScreen otpscreen=new OTPScreen(driver);
             OutletScreen outletScreen=new OutletScreen(driver);
             NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
             SoftAssert softAssert=new SoftAssert();
 
-            // Enter Email and Password
-            logscreen.fillemailAndpasword("m8@sbs.com","536860574604");
-            logscreen.click_on_loginbtn();
-            // Enter OTP
+            //Check remaining at login screen
+            boolean falg=false;
+            arr=loginScreen.check_Remaining_At_LoginScreen("nothing");
+            if(!(arr[0].equals("true")))//if Not at login screen and at new payment screen then should be navigated to login screen
+            {
+                ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
+                loginScreen=profileScreen.ClickOnlogoutBtn();
+
+            }
+            loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+            otpscreen=loginScreen.click_on_loginbtn_for_Merchant();
             message="Enter OTP";
             otpscreen.EnterOTP(message);
-            otpscreen.ClickOnConfirmButton();
-            // Allow GPS
-            gpsscreen.AllowGPS();
-            // Choose the desired outlet
-            outletScreen.ChooseOutlet();
+            outletScreen=otpscreen.ClickOnConfirmButton();
+            newPaymentScreen=outletScreen.ChooseOutlet();
+
             //Enter Any amount
             newPaymentScreen.EnterAmount("100");
-            newPaymentScreen.ClickOnContinueBtn();
+            ScanCardScreen scanCardScreen=newPaymentScreen.ClickOnContinueBtn_Scanscreen();
             //first check navigation to alert screen if yes check the text in the alert box
             Comm="Error";
             arr=newPaymentScreen.Check_Navigation_to_AlertScreen(Comm);
@@ -434,7 +438,7 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
 
-     */
+
     @Test(description = "validation on the ability to navigate to the transaction history screen from the transaction amount screen", priority = 10)
     public void TC_edfapay_062() throws IOException
     {
