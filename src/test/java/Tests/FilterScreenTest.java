@@ -5,12 +5,21 @@ import Screens.*;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class FilterScreenTest extends BaseTest {
     String Comm;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
     @Test(description = "Validation on filtering by only transaction type", priority =1)
     public void TC_edfapay_164() throws IOException {
+
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -27,11 +36,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //open history screen then filter screen
@@ -69,6 +78,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering by only date of operation", priority =2)
     public void TC_edfapay_165() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -85,11 +96,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //open history screen then filter screen
@@ -108,6 +119,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering by only amount range", priority =3)
     public void TC_edfapay_166() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -124,11 +137,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Enter Amount>1000
@@ -186,6 +199,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering by only the ID(transaction number) ", priority =4)
     public void TC_edfapay_168() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -202,11 +217,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -249,6 +264,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering with the amount range from '0' SAR to '0' SAR", priority =5)
     public void TC_edfapay_169() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -265,11 +282,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -306,6 +323,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering with the amount range from 'x' SAR to 'x' SAR", priority =6)
     public void TC_edfapay_170() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -322,11 +341,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -365,6 +384,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering if the start of the amount range > end of the amount range ", priority =7)
     public void TC_edfapay_171() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -381,11 +402,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -427,6 +448,8 @@ public class FilterScreenTest extends BaseTest {
     }
     @Test(description = "Validation on filtering with a part of ID number ", priority =8)
     public void TC_edfapay_172() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -443,11 +466,11 @@ public class FilterScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 

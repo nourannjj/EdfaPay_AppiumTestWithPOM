@@ -6,12 +6,21 @@ import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class ProfileScreenTest extends BaseTest {
     String Comm;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
+
     @Test(description = "Validation on the ability of change the preferred language", priority = 1)
     public void TC_edfapay_155() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -28,11 +37,12 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
+        {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Navigate to profile screen and Check username filed
@@ -50,6 +60,8 @@ public class ProfileScreenTest extends BaseTest {
     }
     @Test(description = "Validation on loging out from the application", priority = 2)
     public void TC_edfapay_156() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -66,11 +78,11 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Navigate to profile screen and logout
@@ -85,6 +97,8 @@ public class ProfileScreenTest extends BaseTest {
 
     @Test(description = "Validation of the name of the Supervisor", priority = 3)
     public void TC_edfapay_158() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -101,16 +115,16 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"), props.getProperty("Sup1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Navigate to profile screen and Check username filed
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-        boolean check=profileScreen.CheckUserNameField("supervisor2 Merchant8");
+        boolean check=profileScreen.CheckUserNameField(props.getProperty("Sup1Name"));
         //Check UserName is right
         Comm="Error:Supervisor name is wrong";
         softAssert.assertEquals(check,true,Comm);
@@ -118,6 +132,8 @@ public class ProfileScreenTest extends BaseTest {
     }
     @Test(description = "Validation of the name of the merchant", priority = 4)
     public void TC_edfapay_159() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -134,7 +150,7 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         // Enter Email and Password
-        loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+        loginScreen.fillemailAndpasword(props.getProperty("MerchantValidEmail"),props.getProperty("MerchantValidPass"));
         OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
         // Enter OTP
         message="Enter OTP";
@@ -144,7 +160,7 @@ public class ProfileScreenTest extends BaseTest {
         newPaymentScreen=outletScreen.ChooseOutlet();
         //Navigate to profile screen and Check username filed
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-        boolean check=profileScreen.CheckUserNameField("Merchant8");
+        boolean check=profileScreen.CheckUserNameField(props.getProperty("MerchantName"));
         //Check UserName is right
         Comm="Error:Merchant name is wrong";
         softAssert.assertEquals(check,true,Comm);
@@ -152,6 +168,8 @@ public class ProfileScreenTest extends BaseTest {
     }
     @Test(description = "Validation of the user outlet", priority = 5)
     public void TC_edfapay_160() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -168,22 +186,25 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
+        {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"), props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Navigate to profile screen and Check username filed
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-        boolean check=profileScreen.CheckOutletNameField("Maadi");
+        boolean check=profileScreen.CheckOutletNameField(props.getProperty("Outlet2"));
         Comm="User outlet is wrong";
         softAssert.assertEquals(check,true,Comm);
         softAssert.assertAll();
     }
     @Test(description = "Validation of the supervisor outlet", priority = 6)
     public void TC_edfapay_161() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -200,22 +221,24 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"))) {
             //Terminal Registration
             loginScreen = terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"), props.getProperty("Sup1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Navigate to profile screen and Check username filed
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-        boolean check=profileScreen.CheckOutletNameField("Maadi");
+        boolean check=profileScreen.CheckOutletNameField(props.getProperty("Outlet2"));
         Comm="Supervisor outlet is wrong";
         softAssert.assertEquals(check,true,Comm);
         softAssert.assertAll();
     }
     @Test(description = "Validation of the Merchant outlet", priority = 7)
     public void TC_edfapay_162() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen = new PINEntryScreen(driver);
@@ -232,7 +255,7 @@ public class ProfileScreenTest extends BaseTest {
 
         }
         // Enter Email and Password
-        loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+        loginScreen.fillemailAndpasword(props.getProperty("MerchantValidEmail"),props.getProperty("MerchantValidPass"));
         OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
         // Enter OTP
         message="Enter OTP";
@@ -242,7 +265,7 @@ public class ProfileScreenTest extends BaseTest {
         newPaymentScreen=outletScreen.ChooseOutlet();
         //Navigate to profile screen and Check username filed
         ProfileScreen profileScreen=newPaymentScreen.ClickOnProfileBtn();
-        boolean check=profileScreen.CheckOutletNameField("Maadi");
+        boolean check=profileScreen.CheckOutletNameField(props.getProperty("Outlet2"));
         Comm="Merchant outlet is wrong";
         softAssert.assertEquals(check,true,Comm);
         softAssert.assertAll();

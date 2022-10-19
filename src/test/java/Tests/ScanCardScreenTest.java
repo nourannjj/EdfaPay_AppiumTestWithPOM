@@ -6,15 +6,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class ScanCardScreenTest extends BaseTest {
     String Comm;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
     @Test(description = "Validation on the back button should be disabled during scanning the card", priority = 1)
     public void TC_edfapay_064() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
+
         String [] arr1=new String[2];
         GPSScreen gpsscreen=new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
@@ -31,12 +40,12 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -56,6 +65,8 @@ public class ScanCardScreenTest extends BaseTest {
 
     @Test(description = "Validation on NFC if it is turned off during the scanning process ", priority = 2)
     public void TC_edfapay_065() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         String[] arr1 = new String[2];
         GPSScreen gpsscreen = new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
@@ -76,11 +87,11 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -96,6 +107,8 @@ public class ScanCardScreenTest extends BaseTest {
     }
     @Test(description = "Validation of navigating the user directly to the Receipt screen without entering the PIN if transaction amount <199.  ", priority = 3)
     public void TC_edfapay_071() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         String[] arr1 = new String[2];
         GPSScreen gpsscreen = new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
@@ -111,11 +124,11 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Enter the Desired Transaction Amount<199
@@ -131,6 +144,8 @@ public class ScanCardScreenTest extends BaseTest {
     }
     @Test(description = "Validation of navigating the user to the PIN entry screen first  if transaction amount >199 ", priority = 4)
     public void TC_edfapay_072() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         String[] arr1 = new String[2];
         GPSScreen gpsscreen = new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
@@ -146,11 +161,11 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Enter the Desired Transaction Amount>199
@@ -166,6 +181,8 @@ public class ScanCardScreenTest extends BaseTest {
     }
     @Test(description = "Validation on  Timeout in Scan Card Page ", priority = 5,enabled = false)
     public void TC_edfapay_073() throws IOException, InterruptedException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         String[] arr1 = new String[2];
         GPSScreen gpsscreen = new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
@@ -181,11 +198,11 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"))) {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -204,6 +221,8 @@ public class ScanCardScreenTest extends BaseTest {
     }
     @Test(description = "Validation on  Timeout in Scan Card Page ", priority = 6)
     public void TC_edfapay_075() throws IOException, InterruptedException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         String[] arr1 = new String[2];
         GPSScreen gpsscreen = new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
@@ -219,11 +238,11 @@ public class ScanCardScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if (!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com")) {
+        if (!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"))) {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com", "12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"));
             newPaymentScreen = loginScreen.click_on_loginbtn_for_User();
         }
         //Enter the Desired Transaction Amount<199
@@ -237,7 +256,7 @@ public class ScanCardScreenTest extends BaseTest {
         if(receiptScreen.CheckPresenceOfRefundBtn(driver))
         {scanCardScreen= receiptScreen.ClickOnRefundBtn_fromSupervisor();}
         //Check navigation to scan card screen
-        Comm="Error:supervisor isn't navigated to scan card screen after clcik on the refund button";
+        Comm="Error:supervisor isn't navigated to scan card screen after click on the refund button";
         arr= scanCardScreen.check_remaining_at_ScanCardScreen(Comm);
         softAssert.assertEquals(arr[0],"true",arr[1]);
         softAssert.assertAll();

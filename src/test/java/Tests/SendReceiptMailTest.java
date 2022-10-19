@@ -5,12 +5,21 @@ import Screens.*;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class SendReceiptMailTest extends BaseTest {
     String Comm;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
+
     @Test(description = "Validation of client receiving the receipt mail", priority = 120)
     public void TC_edfapay_120() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen=new PINEntryScreen(driver);
@@ -28,12 +37,12 @@ public class SendReceiptMailTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass")))
         {
             //Terminal Registration
             loginScreen=terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"));
             newPaymentScreen= loginScreen.click_on_loginbtn_for_User();
         }
         //Enter Amount
@@ -66,7 +75,7 @@ public class SendReceiptMailTest extends BaseTest {
                 //If navigated successfully to send receipt screen  Enter client email and click on send button
                 if(arr[0].equals("true"))
                 {
-                    sendReceiptScreen.InsertEmail("nouran@sbs-sa.net");
+                    sendReceiptScreen.InsertEmail(props.getProperty("CardHolderEmail"));
                     sendReceiptScreen.ClickOnSendButton();
                     //Check that client receives reset mail
                     boolean check = sendReceiptScreen.CheckClientReceiveReceiptMail();
@@ -79,6 +88,8 @@ public class SendReceiptMailTest extends BaseTest {
     }
     @Test(description = "Validation of the ability to resend the receipt mail again if the cardholder didn't receive it", priority = 121)
     public void TC_edfapay_121() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen=new PINEntryScreen(driver);
@@ -96,12 +107,12 @@ public class SendReceiptMailTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass")))
         {
             //Terminal Registration
             loginScreen=terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"));
             newPaymentScreen= loginScreen.click_on_loginbtn_for_User();
         }
         //Enter Amount
@@ -134,7 +145,7 @@ public class SendReceiptMailTest extends BaseTest {
                 //If navigated successfully to send receipt screen  Enter client email and click on send button
                 if(arr[0].equals("true"))
                 {
-                    sendReceiptScreen.InsertEmail("nouran@sbs-sa.net");
+                    sendReceiptScreen.InsertEmail(props.getProperty("CardHolderEmail"));
                     sendReceiptScreen.ClickOnSendButton();
                     //Click on Resend button
                     sendReceiptScreen.ClickONResendButton();
@@ -149,6 +160,8 @@ public class SendReceiptMailTest extends BaseTest {
     }
     @Test(description = "Validation on Sending Receipt  with invalid Email ", priority = 122)
     public void TC_edfapay_122() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen=new PINEntryScreen(driver);
@@ -166,12 +179,12 @@ public class SendReceiptMailTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass")))
         {
             //Terminal Registration
             loginScreen=terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"));
             newPaymentScreen= loginScreen.click_on_loginbtn_for_User();
         }
         //Enter Amount
@@ -204,7 +217,7 @@ public class SendReceiptMailTest extends BaseTest {
                 //If navigated successfully to send receipt screen  Enter client email and click on send button
                 if(arr[0].equals("true"))
                 {
-                    sendReceiptScreen.InsertEmail("nouransbs-sa.net");//invalid Email
+                    sendReceiptScreen.InsertEmail(props.getProperty("InvalidCardHolderEmail"));//invalid Email
                     sendReceiptScreen.ClickOnSendButton();
                     //Check Remaining at send receipt screen
                     arr = sendReceiptScreen.check_remaining_To_SendReceiptScreen(Comm);
@@ -222,6 +235,8 @@ public class SendReceiptMailTest extends BaseTest {
     }
     @Test(description = "Validation on exit icon on Sending Receipt Page ", priority = 124)
     public void TC_edfapay_124() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
 
         NewPaymentScreen newPaymentScreen = new NewPaymentScreen(driver);
         PINEntryScreen pinEntryScreen=new PINEntryScreen(driver);
@@ -239,12 +254,12 @@ public class SendReceiptMailTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8sup2@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass")))
         {
             //Terminal Registration
             loginScreen=terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8sup2@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("Sup1ValidEmail"),props.getProperty("Sup1ValidPass"));
             newPaymentScreen= loginScreen.click_on_loginbtn_for_User();
         }
         //Enter Amount

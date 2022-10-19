@@ -31,7 +31,7 @@ public class BaseTest {
 
     protected LoginScreen loginScreen;
     @BeforeClass
-    public void BeforeMethod() throws IOException {
+    public void BeforeClass() throws IOException {
         inputstream = new FileInputStream(propFile);
         props.load(inputstream);
 

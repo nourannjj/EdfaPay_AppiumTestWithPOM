@@ -7,12 +7,21 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class OutletScreen {
     private AndroidDriver driver;
     List<WebElement> list;Scanner input;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
+
+
     String check=null,comment=null;boolean expected=false;String[] arr;
 
 
@@ -26,9 +35,11 @@ public class OutletScreen {
     private By elements5=By.xpath("//android.widget.TextView");
 
     // Function:Check the validation of only the created outlet in the outlet list
-    public boolean ChecktheoutletsintheList(){
+    public boolean ChecktheoutletsintheList() throws IOException {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         driver.findElement(outletList).click(); // open the list
-        String outlet1 = "Default Outlet branch", outlet2 = "Maadi";
+        String outlet1 = "Default Outlet branch", outlet2 = props.getProperty("Outlet2");
        list=driver.findElements(elements5);
         boolean existed_outlet = false;
         for (WebElement element : list) {

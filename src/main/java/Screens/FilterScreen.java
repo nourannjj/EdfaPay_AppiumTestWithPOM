@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FilterScreen {
+
     private AndroidDriver driver;
     String check=null,comment=null;boolean expected=false;Scanner input;String[] arr;
     List<WebElement> list;

@@ -10,6 +10,7 @@ import java.util.List;
 public class DateOfOperationScreen {
     private AndroidDriver driver;
     List<WebElement> list;
+
     public  DateOfOperationScreen(AndroidDriver driver)
     {
         this.driver=driver;

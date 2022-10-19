@@ -234,11 +234,11 @@ public class LoginScreen  {
 
     }
     //Function:Check that terminal is registered or not
-    public boolean checkThatTerminalRegistered(String email)
+    public boolean checkThatTerminalRegistered(String email,String Pass)
     {
         boolean flag;
         //Login with user credentials
-        fillemailAndpasword(email,"12345678");
+        fillemailAndpasword(email,Pass);
         NewPaymentScreen newPaymentScreen=click_on_loginbtn_for_User();
         arr=check_Navigation_to_AlertScreen("nothing");
         //check not presence of alert screen

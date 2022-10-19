@@ -5,14 +5,24 @@ import Screens.*;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class NewPaymentScreenTest extends BaseTest {
     String Comm;
+    File propFile= new File("src/main/resources/configuration.properties");
+    Properties props = new Properties();
+    FileInputStream inputStream;
+
+
     @Test(description = "Validate that the Merchant shouldn't be allowed to do the payment process", priority = 1,enabled = false)
     public void TC_edfapay_060() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         GPSScreen gpsscreen=new GPSScreen(driver);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -27,7 +37,7 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         // Enter Email and Password
-        loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+        loginScreen.fillemailAndpasword(props.getProperty("MerchantValidEmail"),props.getProperty("MerchantValidPass"));
         OTPScreen otpScreen=loginScreen.click_on_loginbtn_for_Merchant();
         // Enter OTP
         message="Enter OTP";
@@ -68,6 +78,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on entering Amount Page ", priority = 2)
     public void TC_edfapay_053() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -82,12 +94,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
         //Check Navigation to the NewPayment Screen and not remaining at log on screen
@@ -100,6 +112,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on Enter Amount (click on numbers)", priority = 3)
     public void TC_edfapay_054() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -114,12 +128,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -140,6 +154,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on the limit of Amount ", priority = 4)
     public void TC_edfapay_055() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -154,12 +170,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -179,6 +195,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on (click on Clear Button ) ", priority = 5)
     public void TC_edfapay_056() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -193,12 +211,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -220,6 +238,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on click on Continue Button with Enter Amount", priority = 6)
     public void TC_edfapay_057() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -234,12 +254,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -263,6 +283,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation of the continue button after clicking on the new transaction button ", priority = 7)
     public void TC_edfapay_057b() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -277,12 +299,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -309,6 +331,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validation on click on Continue  Button with Enter Amount =zero", priority = 8)
     public void TC_edfapay_058() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -324,12 +348,12 @@ public class NewPaymentScreenTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -344,6 +368,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "Validate the \"continue\" button  if GPS is turned off", priority = 9)
     public void TC_edfapay_059() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -358,12 +384,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -393,9 +419,11 @@ public class NewPaymentScreenTest extends BaseTest {
         //driver.closeApp();
     }
 
-        @Test(description = "Validation of the error message appears when the merchant tries to perform any operation ", priority = 62)
+        @Test(description = "Validation of the error message appears when the merchant tries to perform any operation ", priority = 62,enabled = false)
         public void TC_edfapay_061() throws IOException
         {
+            inputStream = new FileInputStream(propFile);
+            props.load(inputStream);
             TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
             OTPScreen otpscreen=new OTPScreen(driver);
             OutletScreen outletScreen=new OutletScreen(driver);
@@ -411,7 +439,7 @@ public class NewPaymentScreenTest extends BaseTest {
                 loginScreen=profileScreen.ClickOnlogoutBtn();
 
             }
-            loginScreen.fillemailAndpasword("m8@sbs.com","536860574604");
+            loginScreen.fillemailAndpasword(props.getProperty("MerchantValidEmail"),props.getProperty("MerchantValidPass"));
             otpscreen=loginScreen.click_on_loginbtn_for_Merchant();
             message="Enter OTP";
             otpscreen.EnterOTP(message);
@@ -442,6 +470,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "validation on the ability to navigate to the transaction history screen from the transaction amount screen", priority = 10)
     public void TC_edfapay_062() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -456,12 +486,12 @@ public class NewPaymentScreenTest extends BaseTest {
 
         }
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -479,6 +509,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "validation on the ability to navigate to the profile screen from the transaction amount screen", priority = 11)
     public void TC_edfapay_063() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -494,12 +526,12 @@ public class NewPaymentScreenTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
@@ -516,6 +548,8 @@ public class NewPaymentScreenTest extends BaseTest {
     @Test(description = "validation on entering a new transaction amount", priority = 12)
     public void TC_edfapay_064() throws IOException
     {
+        inputStream = new FileInputStream(propFile);
+        props.load(inputStream);
         NewPaymentScreen newPaymentScreen=new NewPaymentScreen(driver);
         TerminalRegistration terminalRegistration=new TerminalRegistration(driver);
         SoftAssert softAssert=new SoftAssert();
@@ -531,12 +565,12 @@ public class NewPaymentScreenTest extends BaseTest {
         }
 
         //Check whether terminal is registered or not
-        if(!loginScreen.checkThatTerminalRegistered("m8u1@sbs.com"))
+        if(!loginScreen.checkThatTerminalRegistered(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass")))
         {
             //Terminal Registration
             terminalRegistration.TerminalReg();
             //login with user credentials
-            loginScreen.fillemailAndpasword("m8u1@sbs.com","12345678");
+            loginScreen.fillemailAndpasword(props.getProperty("User1ValidEmail"),props.getProperty("User1ValidPass"));
             newPaymentScreen=loginScreen.click_on_loginbtn_for_User();
         }
 
